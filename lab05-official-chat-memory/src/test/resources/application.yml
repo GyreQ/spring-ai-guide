@@ -1,0 +1,36 @@
+server:
+  port: 0  # 随机端口
+
+spring:
+  application:
+    name: lab05-official-chat-memory-test
+
+  # AI 配置（测试环境使用 Mock）
+  ai:
+    openai:
+      api-key: test-key
+      base-url: https://api.siliconflow.cn
+      chat:
+        options:
+          model: Qwen/Qwen3-8B
+          temperature: 0.7
+          max-tokens: 1024
+
+  # H2 内存数据库（测试用）
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=MySQL
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  # H2 控制台（测试时可禁用）
+  h2:
+    console:
+      enabled: false
+
+# 日志配置
+logging:
+  level:
+    root: WARN
+    com.gyreq: DEBUG
+    org.springframework.ai: DEBUG
