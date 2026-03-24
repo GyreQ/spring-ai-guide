@@ -1,0 +1,33 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: lab05-official-chat-memory
+
+  # AI 配置
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      base-url: ${OPENAI_BASE_URL:https://api.siliconflow.cn}
+      chat:
+        options:
+          model: ${OPENAI_MODEL:Qwen/Qwen3-8B}
+          temperature: 0.7
+          max-tokens: 1024
+
+  # 数据库配置
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/spring_ai_guide}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+    com.gyreq: DEBUG
+    org.springframework.ai: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"

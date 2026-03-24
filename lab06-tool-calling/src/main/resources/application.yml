@@ -1,0 +1,27 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: lab06-tool-calling
+
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      base-url: ${OPENAI_BASE_URL:https://api.siliconflow.cn}
+      chat:
+        options:
+          model: ${OPENAI_MODEL:Qwen/Qwen3-8B}
+          temperature: 0.7
+          max-tokens: 1024
+
+  # 工具执行异常处理配置
+  ai.tools:
+    # false: 将异常信息发送给模型，让模型进行自我纠正
+    # true: 直接抛出异常给调用者
+    throw-exception-on-error: false
+
+logging:
+  level:
+    com.gyreq: DEBUG
+    org.springframework.ai: DEBUG
