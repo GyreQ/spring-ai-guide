@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.gyreq.ai.example</groupId>
+        <artifactId>spring-ai-guide</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>lab02-prompt-templates</artifactId>
+    <packaging>jar</packaging>
+
+    <name>Lab02 - Prompt Templates</name>
+    <description>Spring AI 提示词模板：提示词与代码解耦的最佳实践</description>
+
+    <dependencies>
+        <!-- 公共基础库 -->
+        <dependency>
+            <groupId>com.gyreq.ai.example</groupId>
+            <artifactId>guide-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Reactor Test (for StepVerifier) -->
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
