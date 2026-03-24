@@ -1,0 +1,55 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: lab04-chat-memory
+
+  # AI 配置
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      base-url: ${OPENAI_BASE_URL:https://api.siliconflow.cn}
+      chat:
+        options:
+          model: ${OPENAI_MODEL:Qwen/Qwen3-8B}
+          temperature: 0.7
+          max-tokens: 1024
+    # 对话记忆配置
+    chat:
+      memory:
+        # 存储类型：memory（默认）、redis、jdbc
+        type: ${CHAT_MEMORY_TYPE:memory}
+        # 最大历史消息条数
+        max-messages: 20
+        # Redis Key 前缀（仅 redis 类型生效）
+        redis-key-prefix: "chat:memory:"
+
+  # Redis 配置（仅当 type=redis 时需要）
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      database: 0
+
+  # 数据库配置（仅当 type=jdbc 时需要）
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/spring_ai_guide}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # Flyway 配置
+  flyway:
+    enabled: false  # 默认关闭，当 type=jdbc 时开启
+    locations: classpath:db/migration
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+    com.gyreq: DEBUG
+    org.springframework.ai: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
