@@ -1,7 +1,9 @@
 package com.gyreq.ai.example.lab07ragsimple;
 
+import com.gyreq.ai.example.common.config.AiProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 /**
  * Lab07 RAG Simple VectorStore 启动类
@@ -12,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since 1.0.0
  */
 @SpringBootApplication
+@EnableConfigurationProperties(AiProperties.class)
 public class Lab07RagSimpleApplication {
 
     public static void main(String[] args) {
