@@ -24,6 +24,7 @@
 
     <modules>
         <module>simple</module>
+        <module>pg</module>
     </modules>
 
 </project>
