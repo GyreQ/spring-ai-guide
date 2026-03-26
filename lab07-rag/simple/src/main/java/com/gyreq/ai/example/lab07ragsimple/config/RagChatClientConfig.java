@@ -2,6 +2,8 @@ package com.gyreq.ai.example.lab07ragsimple.config;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
+import org.springframework.ai.embedding.EmbeddingModel;
+import org.springframework.ai.vectorstore.SimpleVectorStore;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +27,20 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class RagChatClientConfig {
+
+    /**
+     * 创建 SimpleVectorStore Bean
+     *
+     * <p>SimpleVectorStore 是基于内存的向量存储实现，
+     * 适合开发测试场景，重启后数据会丢失。
+     *
+     * @param embeddingModel 嵌入模型
+     * @return SimpleVectorStore 实例
+     */
+    @Bean
+    public VectorStore vectorStore(EmbeddingModel embeddingModel) {
+        return SimpleVectorStore.builder(embeddingModel).build();
+    }
 
     /**
      * 创建带 QuestionAnswerAdvisor 的 ChatClient Bean
