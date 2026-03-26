@@ -59,13 +59,30 @@
 ### 配置方式
 
 ```java
-@Bean
-public ChatClient chatClient(ChatClient.Builder builder, VectorStore vectorStore) {
-    return builder
-            .defaultAdvisors(QuestionAnswerAdvisor.builder(vectorStore).build())
-            .build();
+@Configuration
+public class RagChatClientConfig {
+
+    /**
+     * 创建 SimpleVectorStore Bean
+     */
+    @Bean
+    public VectorStore vectorStore(EmbeddingModel embeddingModel) {
+        return SimpleVectorStore.builder(embeddingModel).build();
+    }
+
+    /**
+     * 创建带 QuestionAnswerAdvisor 的 ChatClient Bean
+     */
+    @Bean
+    public ChatClient chatClient(ChatClient.Builder builder, VectorStore vectorStore) {
+        return builder
+                .defaultAdvisors(QuestionAnswerAdvisor.builder(vectorStore).build())
+                .build();
+    }
 }
 ```
+
+> **注意**：`SimpleVectorStore` 需要手动创建 Bean 并注入 `EmbeddingModel`，`EmbeddingModel` 由 `spring-ai-starter-model-openai` 自动配置提供。
 
 ### 工作原理
 
@@ -146,10 +163,16 @@ Content-Type: application/json
 ## 依赖说明
 
 ```xml
-<!-- 简单的内存向量库 -->
+<!-- Spring AI OpenAI（提供 ChatModel 和 EmbeddingModel） -->
 <dependency>
     <groupId>org.springframework.ai</groupId>
-    <artifactId>spring-ai-starter-vector-store-simple</artifactId>
+    <artifactId>spring-ai-starter-model-openai</artifactId>
+</dependency>
+
+<!-- Advisor 向量存储（提供 QuestionAnswerAdvisor） -->
+<dependency>
+    <groupId>org.springframework.ai</groupId>
+    <artifactId>spring-ai-advisors-vector-store</artifactId>
 </dependency>
 
 <!-- 文档解析器（支持 PDF、DOC、PPT 等格式） -->
