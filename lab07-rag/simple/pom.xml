@@ -32,7 +32,7 @@
         <!-- 简单的内存向量库 -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-vector-store-simple</artifactId>
+            <artifactId>spring-ai-advisors-vector-store</artifactId>
         </dependency>
 
         <!-- 文档解析器 -->
