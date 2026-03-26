@@ -20,9 +20,9 @@ import java.io.IOException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.lenient;
 
 /**
  * KnowledgeService 单元测试
@@ -42,7 +42,7 @@ class KnowledgeServiceTest extends BaseChatClientTest {
 
     @BeforeEach
     void setUp() {
-        when(aiProperties.getModel()).thenReturn("test-model");
+        lenient().when(aiProperties.getModel()).thenReturn("test-model");
         knowledgeService = new KnowledgeServiceImpl(vectorStore, chatClient, aiProperties);
     }
 
@@ -72,8 +72,8 @@ class KnowledgeServiceTest extends BaseChatClientTest {
     }
 
     @Test
-    @DisplayName("上传空文件时应返回零片段")
-    void shouldReturnZeroChunks_whenUploadEmptyFile() {
+    @DisplayName("上传空文件时应抛出 DocumentProcessException")
+    void shouldThrowDocumentProcessException_whenUploadEmptyFile() {
         // Given
         MockMultipartFile file = new MockMultipartFile(
                 "file",
@@ -82,13 +82,8 @@ class KnowledgeServiceTest extends BaseChatClientTest {
                 new byte[0]
         );
 
-        // When
-        UploadResponseDTO response = knowledgeService.upload(file);
-
-        // Then
-        assertNotNull(response);
-        assertEquals(0, response.chunkCount());
-        assertEquals("empty.txt", response.fileName());
+        // When & Then
+        assertThrows(DocumentProcessException.class, () -> knowledgeService.upload(file));
     }
 
     @Test

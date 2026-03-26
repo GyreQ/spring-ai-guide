@@ -16,6 +16,12 @@
     <name>Lab07 - RAG 检索增强生成</name>
     <description>RAG 学习模块，对比学习不同向量数据库的实现</description>
 
+    <properties>
+        <java.version>21</java.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+    </properties>
+
     <modules>
         <module>simple</module>
     </modules>

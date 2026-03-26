@@ -50,6 +50,11 @@ public class KnowledgeServiceImpl implements KnowledgeService {
      */
     @Override
     public UploadResponseDTO upload(MultipartFile file) {
+        // 检查空文件
+        if (file.isEmpty()) {
+            throw new DocumentProcessException("文件内容为空");
+        }
+
         try {
             // 1. Extract - 使用 TikaDocumentReader 读取文档
             TikaDocumentReader reader = new TikaDocumentReader(
@@ -74,7 +79,7 @@ public class KnowledgeServiceImpl implements KnowledgeService {
             return UploadResponseDTO.of(chunks.size(), file.getOriginalFilename());
         } catch (Exception e) {
             log.error("文档处理失败: fileName={}", file.getOriginalFilename(), e);
-            throw new DocumentProcessException("文档处理失败: " + e.getMessage());
+            throw new DocumentProcessException("文档处理失败: " + e.getMessage(), e);
         }
     }
 
