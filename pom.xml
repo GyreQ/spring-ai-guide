@@ -115,6 +115,7 @@
         <module>lab04-chat-memory</module>
         <module>lab05-official-chat-memory</module>
         <module>lab06-tool-calling</module>
+        <module>lab07-rag</module>
     </modules>
 
     <build>

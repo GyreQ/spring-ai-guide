@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.gyreq.ai.example</groupId>
+        <artifactId>spring-ai-guide</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>lab07-rag</artifactId>
+    <packaging>pom</packaging>
+
+    <name>Lab07 - RAG 检索增强生成</name>
+    <description>RAG 学习模块，对比学习不同向量数据库的实现</description>
+
+    <modules>
+        <module>simple</module>
+    </modules>
+
+</project>

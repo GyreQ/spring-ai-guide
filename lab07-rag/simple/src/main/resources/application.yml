@@ -1,0 +1,21 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: lab07-rag-simple
+
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      base-url: ${OPENAI_BASE_URL:https://api.siliconflow.cn}
+      chat:
+        options:
+          model: ${OPENAI_MODEL:Qwen/Qwen3-8B}
+          temperature: 0.7
+          max-tokens: 1024
+
+logging:
+  level:
+    com.gyreq: DEBUG
+    org.springframework.ai: DEBUG
