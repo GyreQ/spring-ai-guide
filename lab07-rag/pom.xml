@@ -25,6 +25,7 @@
     <modules>
         <module>simple</module>
         <module>pg</module>
+        <module>milvus</module>
     </modules>
 
 </project>

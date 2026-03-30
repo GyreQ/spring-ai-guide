@@ -10,10 +10,10 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>lab07-rag-pg</artifactId>
+    <artifactId>lab07-rag-milvus</artifactId>
 
-    <name>Lab07 - RAG PgVector</name>
-    <description>使用 PostgreSQL PgVector 实现 RAG 检索增强生成</description>
+    <name>Lab07 - RAG Milvus</name>
+    <description>使用 Milvus 向量数据库实现 RAG 检索增强生成</description>
 
     <dependencies>
         <!-- 公共模块 -->
@@ -29,22 +29,16 @@
             <artifactId>spring-ai-starter-model-openai</artifactId>
         </dependency>
 
-        <!-- PgVector 向量库支持 -->
+        <!-- Milvus 向量库支持 -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-vector-store-pgvector</artifactId>
+            <artifactId>spring-ai-starter-vector-store-milvus</artifactId>
         </dependency>
 
+        <!-- RAG Advisor 支持 -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-advisors-vector-store</artifactId>
-        </dependency>
-
-        <!-- PostgreSQL 驱动 -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
         </dependency>
 
         <!-- 文档解析器 -->

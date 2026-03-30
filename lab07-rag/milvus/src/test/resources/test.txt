@@ -1,0 +1,7 @@
+This is a test document content for testing the upload functionality.
+It contains multiple lines of text to ensure proper chunking during the ETL process.
+
+Spring AI is a framework for building AI applications with Spring Boot.
+It provides abstractions for working with various AI models and services.
+
+This document serves as a test resource for the KnowledgeServiceTest unit tests.
